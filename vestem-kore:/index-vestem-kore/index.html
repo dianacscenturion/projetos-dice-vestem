@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KORE Essential — Projeto | DICE</title>
+<meta name="description" content="Projeto KORE Essential apresentado em layout editorial no estilo DICE, com campanha, sistema visual, catálogo digital e aplicações.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#1D3A52;
+  --azul-profundo:#10283D;
+  --ciano:#4E808E;
+  --terracota:#C8622A;
+  --areia:#CA8A52;
+  --creme:#F5EFE0;
+  --branco:#FFFFFF;
+  --grafite:#1E1E1E;
+  --muted:rgba(29,58,82,.70);
+  --line:rgba(29,58,82,.12);
+  --shadow:0 16px 40px rgba(29,58,82,.12);
+  --shadow-strong:0 28px 80px rgba(16,40,61,.22);
+  --max:1200px;
+  --radius:16px;
+  --transition:.25s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Fira Sans',system-ui,sans-serif;background:var(--creme);color:var(--azul);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+button.hero-media,button.image-panel,button.project-card,button.catalog-sheet{border:0;text-align:left;cursor:pointer}
+.container{width:min(var(--max),calc(100% - 4rem));margin:0 auto}
+.section{padding:104px 0;position:relative}
+.section-soft{background:linear-gradient(180deg,var(--creme),#F8F1E4)}
+.section-dark{background:var(--azul-profundo);color:var(--creme)}
+.kicker{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--ciano);font-weight:700;margin-bottom:14px}
+.section-dark .kicker{color:var(--ciano)}
+h1,h2,h3{font-weight:400;letter-spacing:-.04em}
+h1{font-size:clamp(48px,7vw,96px);line-height:.92;color:var(--creme)}
+h1 span{display:block;color:var(--terracota)}
+h2{font-size:clamp(34px,5vw,64px);line-height:.98}
+h2 em{font-style:normal;color:var(--terracota)}
+h3{font-size:22px;line-height:1.15}
+p{font-size:15px;line-height:1.78;color:var(--muted);font-weight:300}
+.section-dark p{color:rgba(245,239,224,.76)}
+.nav{position:fixed;z-index:100;top:0;left:0;right:0;transition:.25s ease;padding:22px 0;color:var(--creme)}
+.nav.scrolled{background:rgba(16,40,61,.92);backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:20px;letter-spacing:.42em;font-weight:500;line-height:1}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,224,.78);transition:.25s ease}
+.nav-links a:hover{color:var(--terracota)}
+.menu-btn{display:none;background:transparent;border:0;color:var(--creme);font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.hero{min-height:100vh;background:radial-gradient(circle at 78% 18%,rgba(200,98,42,.22),transparent 28%),linear-gradient(160deg,var(--azul-profundo),var(--azul) 58%,#0C1F30);display:flex;align-items:center;padding:132px 0 78px;color:var(--creme);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-12vw;bottom:-22vw;width:58vw;height:58vw;border:1px solid rgba(245,239,224,.08);border-radius:50%}
+.hero::after{content:"";position:absolute;left:-18vw;top:-20vw;width:52vw;height:52vw;border:1px solid rgba(200,98,42,.10);border-radius:50%}
+.hero-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:56px;align-items:center;position:relative;z-index:2}
+.hero-copy{max-width:610px}
+.hero-lead{margin-top:24px;font-size:17px;line-height:1.8;color:rgba(245,239,224,.78)}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.pill{display:inline-flex;align-items:center;border:1px solid rgba(245,239,224,.20);border-radius:999px;padding:8px 12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,239,224,.74)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.95rem 1.6rem;border-radius:4px;border:2px solid transparent;font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;transition:transform var(--transition),background var(--transition),border-color var(--transition),color var(--transition);cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--terracota);border-color:var(--terracota);color:var(--branco)}
+.btn-primary:hover{background:transparent;color:var(--terracota)}
+.btn-outline{background:transparent;border-color:rgba(245,239,224,.28);color:var(--creme)}
+.btn-outline:hover{background:rgba(245,239,224,.08)}
+.hero-media{border-radius:28px;overflow:hidden;box-shadow:var(--shadow-strong);background:rgba(255,255,255,.06);padding:14px;transform:rotate(-1.2deg);border:1px solid rgba(255,255,255,.08)}
+.hero-media img{border-radius:20px;width:100%;aspect-ratio:4/5;object-fit:cover}
+.hero-caption{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 6px 0;color:rgba(245,239,224,.76);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.overview-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:28px;align-items:start}
+.info-card,.text-panel,.card,.system-card,.catalog-shell,.project-card{background:var(--branco);border:1px solid var(--line);box-shadow:var(--shadow)}
+.info-card{border-radius:24px;padding:28px;position:sticky;top:94px}
+.info-list{display:grid;gap:16px;margin-top:24px}
+.info-item{padding-bottom:14px;border-bottom:1px solid var(--line)}
+.info-item:last-child{padding-bottom:0;border-bottom:0}
+.info-item span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracota);margin-bottom:6px;font-weight:700}
+.info-item strong{font-size:18px;font-weight:500;color:var(--azul-profundo)}
+.text-panel{padding:34px;border-radius:28px}
+.large-copy{font-size:28px;line-height:1.22;color:var(--azul-profundo);font-weight:400;margin-bottom:18px}
+.large-copy strong{color:var(--terracota);font-weight:500}
+.cards-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:34px}
+.card{padding:28px 24px 26px;border-radius:22px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover,.system-card:hover,.project-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(29,58,82,.16);border-color:rgba(78,128,142,.28)}
+.card-number{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ciano);font-weight:800;margin-bottom:18px}
+.card h3{margin-bottom:12px;color:var(--azul-profundo)}
+.card p{font-size:14px;color:var(--muted)}
+.direction-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.image-panel{background:var(--branco);border:1px solid rgba(245,239,224,.08);padding:14px;border-radius:28px;box-shadow:var(--shadow-strong);cursor:pointer;transition:transform .3s ease;position:relative}
+.image-panel:hover{transform:translateY(-4px)}
+.image-panel img{width:100%;border-radius:20px;aspect-ratio:4/3;object-fit:cover}
+.expand{position:absolute;top:24px;right:24px;background:rgba(16,40,61,.74);backdrop-filter:blur(8px);color:var(--creme);border-radius:999px;padding:8px 10px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(-4px);transition:.2s ease}
+.image-panel:hover .expand,.project-card:hover .expand{opacity:1;transform:translateY(0)}
+.visual-list{display:grid;gap:18px;margin-top:24px}
+.visual-item{display:grid;grid-template-columns:88px 1fr;gap:18px;padding-bottom:16px;border-bottom:1px solid rgba(245,239,224,.14)}
+.visual-item:last-child{padding-bottom:0;border-bottom:0}
+.visual-item span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--terracota);font-weight:700;margin-top:3px}
+.system-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:34px}
+.system-card{padding:24px;border-radius:22px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.system-card h3{font-size:20px;color:var(--azul-profundo);margin-bottom:12px}
+.system-card p{font-size:14px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ciano);margin-bottom:12px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--terracota)}
+.catalog-top{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:28px}
+.catalog-top p{max-width:540px}
+.catalog-shell{margin-top:34px;border-radius:32px;padding:28px;background:linear-gradient(180deg,#fff,#f8f7f3)}
+.catalog-view{display:grid;grid-template-columns:56px minmax(0,1fr) 56px;gap:16px;align-items:center}
+.catalog-nav-btn{width:56px;height:56px;border-radius:999px;border:1px solid var(--line);background:var(--branco);color:var(--azul);font-size:28px;display:grid;place-items:center;cursor:pointer;transition:.25s ease}
+.catalog-nav-btn:hover:not(:disabled){border-color:var(--terracota);color:var(--terracota);transform:translateY(-1px)}
+.catalog-nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.catalog-book{background:linear-gradient(180deg,#eae7e1,#f7f5ef);border:1px solid rgba(29,58,82,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 18px 50px rgba(16,40,61,.10);border-radius:28px;padding:18px;min-height:520px;display:flex;align-items:center;justify-content:center}
+.catalog-spread{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;position:relative}
+.catalog-spread::after{content:"";position:absolute;left:50%;top:10px;bottom:10px;width:1px;background:linear-gradient(180deg,transparent,rgba(16,40,61,.16),transparent);transform:translateX(-50%)}
+.catalog-sheet{background:linear-gradient(180deg,#fff,#f8f8f4);border-radius:20px;box-shadow:0 14px 34px rgba(16,40,61,.12);padding:14px;display:flex;align-items:center;justify-content:center;min-height:440px}
+.catalog-sheet.single{grid-column:1/-1;max-width:540px;margin:0 auto}
+.catalog-sheet img{width:100%;height:auto;max-height:640px;object-fit:contain;border-radius:10px}
+.catalog-meta{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.catalog-counter{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);font-weight:700}
+.catalog-thumbs{display:flex;gap:10px;flex-wrap:wrap}
+.catalog-thumb{width:54px;height:72px;border-radius:12px;border:1px solid var(--line);padding:0;overflow:hidden;background:var(--branco);cursor:pointer;transition:.2s ease}
+.catalog-thumb img{width:100%;height:100%;object-fit:cover}
+.catalog-thumb.active{border-color:var(--terracota);box-shadow:0 0 0 2px rgba(200,98,42,.16)}
+.gallery-head{display:flex;justify-content:space-between;gap:24px;align-items:end}
+.gallery-head p{max-width:520px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px}
+.project-card{border-radius:24px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;background:var(--branco)}
+.project-card-media{position:relative;overflow:hidden}
+.project-card-media img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .45s ease}
+.project-card:hover img{transform:scale(1.035)}
+.project-card-content{padding:20px 20px 22px;min-height:136px}
+.project-card-content span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracota);font-weight:700}
+.project-card-content h3{font-size:19px;margin:8px 0;color:var(--azul)}
+.project-card-content p{font-size:13px;line-height:1.6;color:var(--azul-profundo)}
+.footer{background:var(--azul-profundo);color:var(--creme);padding:42px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer-brand{font-size:18px;letter-spacing:.38em}
+.footer p{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,239,224,.42)}
+.lightbox{position:fixed;inset:0;background:rgba(7,18,28,.88);backdrop-filter:blur(14px);z-index:1000;display:none;align-items:center;justify-content:center;padding:clamp(18px,4vw,56px)}
+.lightbox.open{display:flex}
+.lightbox-box{width:min(1180px,100%);max-height:92vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,340px);gap:22px;align-items:end}
+.lightbox-img{width:100%;max-height:92vh;object-fit:contain;border-radius:24px;background:rgba(255,255,255,.08);box-shadow:0 28px 80px rgba(0,0,0,.35)}
+.lightbox-caption{background:var(--creme);border-radius:22px;padding:24px;color:var(--azul);box-shadow:0 20px 55px rgba(0,0,0,.22)}
+.lightbox-caption h3{font-size:18px;margin-bottom:10px}
+.lightbox-caption p{font-size:13px;line-height:1.65}
+.lightbox-close{position:fixed;top:22px;right:24px;width:44px;height:44px;border-radius:999px;border:1px solid rgba(245,239,224,.24);background:rgba(245,239,224,.08);color:var(--creme);font-size:28px;cursor:pointer}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:980px){
+  .hero-grid,.overview-grid,.direction-grid{grid-template-columns:1fr}
+  .cards-grid,.system-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .catalog-top,.gallery-head{display:block}
+  .catalog-top p,.gallery-head p{margin-top:12px}
+  .catalog-book{min-height:480px}
+  .catalog-sheet{min-height:420px}
+  .hero-media{transform:none}
+  .section{padding:82px 0}
+  .visual-item{grid-template-columns:1fr;gap:8px}
+  .lightbox-box{grid-template-columns:1fr}
+  .lightbox-img{max-height:70vh}
+}
+@media(max-width:768px){
+  .container{width:min(100% - 2rem,var(--max))}
+  .nav-links{position:absolute;top:62px;right:1rem;left:1rem;display:none;flex-direction:column;align-items:flex-start;background:rgba(16,40,61,.96);border:1px solid rgba(245,239,224,.12);border-radius:18px;padding:18px}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .hero{padding-top:116px}
+  .hero-actions .btn{width:100%}
+  .cards-grid,.system-grid,.gallery{grid-template-columns:1fr}
+  .catalog-view{grid-template-columns:40px minmax(0,1fr) 40px;gap:8px}
+  .catalog-nav-btn{width:40px;height:40px}
+  .catalog-shell{padding:16px;border-radius:22px}
+  .catalog-book{padding:12px;min-height:320px}
+  .catalog-spread{grid-template-columns:1fr}
+  .catalog-spread::after{display:none}
+  .catalog-sheet{min-height:360px}
+  .catalog-sheet.single{max-width:none}
+  .catalog-sheet.right{display:none}
+  .catalog-meta{display:block}
+  .catalog-thumbs{margin-top:14px}
+  .footer-inner{flex-direction:column;text-align:center}
+  h1{font-size:clamp(42px,14vw,68px)}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#top">DICE</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#projeto">Projeto</a></li>
+      <li><a href="#proposta">Proposta</a></li>
+      <li><a href="#direcao">Direção Visual</a></li>
+      <li><a href="#sistema">Sistema Visual</a></li>
+      <li><a href="#aplicacoes">Aplicações</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <p class="kicker">Vestem · Campanha de coleção · 2025</p>
+      <h1>KORE <span>Essential</span></h1>
+      <p class="hero-lead">Página de apresentação da campanha KORE para a Vestem, reorganizada com a lógica visual da DICE: estrutura premium, leitura editorial, navegação responsiva e destaque de interface em ciano e terracota para valorizar o projeto.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#aplicacoes">Ver aplicações</a>
+      </div>
+      <div class="meta-row">
+        <span class="pill">Campanha</span>
+        <span class="pill">Mockups editoriais</span>
+        <span class="pill">Moda fitness premium</span>
+        <span class="pill">Direção de arte</span>
+      </div>
+    </div>
+    <button class="hero-media reveal" data-lightbox="assets/img/kore-capa.png" data-title="Hero da campanha KORE" data-desc="Imagem de abertura atualizada com mockup de vitrine e aplicação institucional da campanha KORE x Vestem.">
+      <img src="assets/img/kore-capa.png" alt="Hero do projeto KORE em vitrine">
+      <div class="hero-caption"><span>Hero</span><span>KORE x Vestem</span></div>
+    </button>
+  </div>
+</header>
+<main>
+  <section class="section section-soft" id="projeto">
+    <div class="container overview-grid">
+      <aside class="info-card reveal">
+        <p class="kicker">Projeto</p>
+        <h3>Resumo executivo</h3>
+        <div class="info-list">
+          <div class="info-item"><span>Marca</span><strong>Vestem</strong></div>
+          <div class="info-item"><span>Projeto</span><strong>KORE Essential</strong></div>
+          <div class="info-item"><span>Ano</span><strong>2025</strong></div>
+          <div class="info-item"><span>Categoria</span><strong>Moda fitness premium</strong></div>
+          <div class="info-item"><span>Entregas</span><strong>Campanha e mockups</strong></div>
+        </div>
+      </aside>
+      <div class="text-panel reveal">
+        <p class="kicker">Visão geral</p>
+        <p class="large-copy">Uma campanha com foco em <strong>sofisticação minimalista</strong>, equilíbrio entre performance e lifestyle e apresentação limpa para um produto fitness de apelo premium.</p>
+        <p>KORE apresenta uma comunicação sofisticada, minimalista e contemporânea, com foco em peças fitness de estética essencial. A proposta visual conecta performance e lifestyle de forma sóbria, posicionando a coleção como uma linha de moda fitness premium e versátil.</p>
+        <p>No layout do portfólio, a lógica visual da DICE entra como sistema de navegação e apresentação: azul profundo como base, ciano e terracota como destaques de interface, cards com hover, lightbox para ampliar imagens e organização editorial entre conceito, sistema e aplicações.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="proposta">
+    <div class="container">
+      <p class="kicker reveal">Proposta</p>
+      <h2 class="reveal">Minimalismo, <em>performance</em> e leitura comercial.</h2>
+      <div class="cards-grid">
+        <article class="card reveal"><div class="card-number">01</div><h3>Conceito da coleção</h3><p>A campanha explora tons neutros, presença de marca sutil e composições elegantes, transmitindo força, equilíbrio e modernidade.</p></article>
+        <article class="card reveal"><div class="card-number">02</div><h3>Direção criativa</h3><p>A base visual clean, com branco, preto e neutros, cria uma percepção atemporal e silenciosamente sofisticada.</p></article>
+        <article class="card reveal"><div class="card-number">03</div><h3>Vocação digital</h3><p>As peças foram pensadas para funcionar em redes sociais, catálogo incorporado e materiais de apresentação de portfólio.</p></article>
+        <article class="card reveal"><div class="card-number">04</div><h3>Apelo premium</h3><p>Respiro, simetria e organização editorial elevam a percepção da coleção e reforçam seu posicionamento essencial.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="direcao">
+    <div class="container direction-grid">
+      <button class="image-panel reveal" data-lightbox="assets/img/kore-mk11.png" data-title="Direção visual em apresentação" data-desc="Mockup atualizado com aplicação da campanha em ambiente de apresentação, reforçando o sistema visual limpo e institucional.">
+        <span class="expand">Ampliar</span>
+        <img src="assets/img/kore-mk11.png" alt="Apresentação institucional KORE x Vestem">
+      </button>
+      <div class="reveal">
+        <p class="kicker">Direção Visual</p>
+        <h2>Elegância essencial com clima <em>fitness premium</em>.</h2>
+        <div class="visual-list">
+          <div class="visual-item"><span>Paleta</span><p>A campanha mantém branco, preto e neutros como base visual. No portfólio, ciano e terracota aparecem como destaques estruturais da DICE.</p></div>
+          <div class="visual-item"><span>Imagem</span><p>Fotografia e mockups trabalham equilíbrio, sobriedade e presença, reforçando a sensação de uma coleção contemporânea e versátil.</p></div>
+          <div class="visual-item"><span>Layout</span><p>A diagramação privilegia espaço negativo, alinhamento consistente e hierarquia clara para uma leitura editorial fluida.</p></div>
+          <div class="visual-item"><span>Tom</span><p>A linguagem é limpa e segura, com comunicação objetiva e sofisticação silenciosa, sem excesso de ruído visual.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="sistema">
+    <div class="container">
+      <p class="kicker reveal">Sistema Visual</p>
+      <h2 class="reveal">Um conjunto modular para <em>campanha e exposição</em>.</h2>
+      <div class="system-grid">
+        <article class="system-card reveal"><div class="badge">Estrutura</div><h3>Grid editorial</h3><p>O projeto foi reorganizado em blocos claros, com navegação direta e separação entre contexto, proposta, direção visual e aplicações.</p></article>
+        <article class="system-card reveal"><div class="badge">Destaques</div><h3>Ciano e terracota</h3><p>Os acentos visuais da DICE sinalizam interações, CTAs e elementos de apoio, mantendo coerência com o restante do portfólio.</p></article>
+        <article class="system-card reveal"><div class="badge">Interação</div><h3>Hover e lightbox</h3><p>Cards com hover sutil e ampliação das imagens criam uma apresentação mais premium, sem perder objetividade ou fluidez.</p></article>
+        <article class="system-card reveal"><div class="badge">Desdobramento</div><h3>Responsividade</h3><p>A estrutura responde bem em desktop e mobile, com galeria visual fluida no desktop e leitura simplificada em tela menor.</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section section-soft" id="aplicacoes">
+    <div class="container">
+      <div class="gallery-head reveal">
+        <div>
+          <p class="kicker">Aplicações</p>
+          <h2>Mockups.</h2>
+        </div>
+      </div>
+      <div class="gallery">
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk1.png" data-title="Painel interno" data-desc="Composição em ambiente fitness com dois painéis, mantendo a estética clean e a leitura minimalista da campanha.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk1.png" alt="Painel interno"></div>
+          <div class="project-card-content"><span>Aplicação 01</span><h3>Painel interno</h3><p>Composição em ambiente fitness com dois painéis, mantendo a estética clean e a leitura minimalista da campanha.</p></div>
+        </button>
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk2.png" data-title="Catálogo editorial" data-desc="Mockup de catálogo aberto e capa, destacando a organização editorial e o sistema visual da coleção KORE.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk2.png" alt="Catálogo editorial"></div>
+          <div class="project-card-content"><span>Aplicação 02</span><h3>Catálogo editorial</h3><p>Mockup de catálogo aberto e capa, destacando a organização editorial e o sistema visual da coleção KORE.</p></div>
+        </button>
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk6.png" data-title="Catálogo impresso" data-desc="Mockup de capa com ambientação comercial, valorizando o acabamento limpo e a presença da parceria KORE x Vestem.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk6.png" alt="Catálogo impresso"></div>
+          <div class="project-card-content"><span>Aplicação 03</span><h3>Catálogo impresso</h3><p>Mockup de capa com ambientação comercial, valorizando o acabamento limpo e a presença da parceria KORE x Vestem.</p></div>
+        </button>
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk9.png" data-title="Stories Instagram" data-desc="Desdobramento mobile para redes sociais, com linguagem direta e leitura rápida em formato vertical.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk9.png" alt="Stories Instagram"></div>
+          <div class="project-card-content"><span>Aplicação 04</span><h3>Stories Instagram</h3><p>Desdobramento mobile para redes sociais, com linguagem direta e leitura rápida em formato vertical.</p></div>
+        </button>
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk11.png" data-title="Apresentação institucional" data-desc="Aplicação em tela de apresentação, pensada para mostrar a campanha em contexto corporativo e comercial.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk11.png" alt="Apresentação institucional"></div>
+          <div class="project-card-content"><span>Aplicação 05</span><h3>Apresentação institucional</h3><p>Aplicação em tela de apresentação, pensada para mostrar a campanha em contexto corporativo e comercial.</p></div>
+        </button>
+        <button class="project-card reveal" data-lightbox="assets/img/kore-mk14.png" data-title="Painel de academia" data-desc="Mockup de painel iluminado em ambiente fitness, conectando a campanha ao universo de performance.">
+          <div class="project-card-media"><span class="expand">Ampliar</span><img src="assets/img/kore-mk14.png" alt="Painel de academia"></div>
+          <div class="project-card-content"><span>Aplicação 06</span><h3>Painel de academia</h3><p>Mockup de painel iluminado em ambiente fitness, conectando a campanha ao universo de performance.</p></div>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">DICE</div>
+    <p>KORE Essential · estrutura editorial premium · portfólio responsivo</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
+  <div class="lightbox-box">
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <div class="lightbox-caption">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+document.querySelectorAll('#navLinks a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 24));
+
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: .14 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxDesc = document.getElementById('lightboxDesc');
+const lightboxClose = document.getElementById('lightboxClose');
+function openLightbox(src, title, desc) {
+  lightboxImg.src = src;
+  lightboxImg.alt = title || '';
+  lightboxTitle.textContent = title || '';
+  lightboxDesc.textContent = desc || '';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('[data-lightbox]').forEach(el => {
+  el.addEventListener('click', () => openLightbox(el.dataset.lightbox, el.dataset.title, el.dataset.desc));
+});
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+</script>
+</body>
+</html>
